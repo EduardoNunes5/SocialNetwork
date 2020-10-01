@@ -1,5 +1,6 @@
 package com.socialnetwork.socialnetworkdemo.controllers;
 
+import com.socialnetwork.socialnetworkdemo.dtos.UserDTO;
 import com.socialnetwork.socialnetworkdemo.entities.User;
 import com.socialnetwork.socialnetworkdemo.services.UserService;
 
@@ -23,7 +24,7 @@ public class UserController {
     @PostMapping(value = "users")
     public ResponseEntity<?> createUser(@RequestBody User user){
         try {
-            return new ResponseEntity<>(this.userService.createUser(user), HttpStatus.OK);
+            return new ResponseEntity<>(new UserDTO(this.userService.createUser(user)), HttpStatus.OK);
         }
         catch(IllegalArgumentException iae){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
