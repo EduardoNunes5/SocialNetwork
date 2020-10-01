@@ -1,5 +1,7 @@
 package com.socialnetwork.socialnetworkdemo.entities;
 
+import com.sun.istack.NotNull;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -10,9 +12,14 @@ public class User {
     @Id
     @GeneratedValue
     private long id;
+
+    @NotNull
     private String name;
+    @NotNull
     private String email;
     private int age;
+    @NotNull
+    private String password;
 
 
     public User(){}
@@ -29,6 +36,18 @@ public class User {
 
     public String getName(){
         return this.name;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public void setName(String newName){
